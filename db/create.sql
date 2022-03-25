@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS results (
+    pk INT PRIMARY KEY AUTO_INCREMENT,
+    main_dish VARCHAR(30) NOT NULL,
+    side_dish VARCHAR(30) NOT NULL,
+    price INT NOT NULL
+);
