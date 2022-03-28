@@ -6,5 +6,5 @@ mains = ['Tuna Mayo Baguette', 'Prawn Mayo Sandwich', 'Chicken Tikka Curry and B
 
 @app.route('/get-mains', methods=['GET'])
 def get_mains():
-    g_mains = choice(mains)
-    return jsonify(mains=mains)
+    main = choice(mains)
+    return jsonify(main=main)
