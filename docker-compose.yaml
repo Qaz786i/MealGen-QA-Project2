@@ -1,0 +1,53 @@
+version: "3.8"
+services:
+  mysql:
+    image: qasimharoon/meal-gen-db:latest
+    build: ./db
+    volumes:
+      - type: volume
+        source: meal-gen-vol
+        target: /var/lib/mysql
+    networks:
+      - "meal-gen-net"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: meal-gen-deb
+  front-end:
+    image: qasimharoon/meal-gen-front:latest
+    build: ./front-end
+    networks:
+      - "meal-gen-net"
+    depends_on:
+      - "mysql"
+      - "animal-api"
+      - "noise-api"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  animal-api:
+    image: qasimharoon/animal-noise-animal:latest
+    build: ./animal-api
+    networks:
+      - "animal-net"
+  noise-api:
+    image: qasimharoon/animal-noise-noise:latest
+    build: ./noise-api
+    networks:
+      - "animal-net"
+  nginx:
+    image: nginx:latest
+    ports:
+      - published: 80
+        target: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+    networks:
+      - "meal-gen-net"
+    depends_on:
+      - "front-end"
+volumes:
+  meal-gen-vol:
+networks:
+  meal-gen-net:
