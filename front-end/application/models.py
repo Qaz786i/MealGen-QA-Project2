@@ -4,6 +4,8 @@ class Make_meal(db.Model):
     id = db.Column(db.Interger, primary_key=True)
     main_dish = db.Column(db.String(30), nullable=False)
     side_dish = db.Column(db.String(30), nullable=False)
-    price = db.Column(db.Integer)
+    price_main = db.Column(db.Integer)
+    price_side = db.Column(db.Integer)
+    total_price = db.Column(db.Integer)
     def __repr__(self):
-        return f"Mains: {self.main_dish}, Sides: {self.side_dish}, Total Price: {self.price}"
+        return f"Mains: {self.main_dish} {self.price_main}, Sides: {self.side_dish} {self.price_side}, Total Price: {self.price}"

@@ -8,6 +8,7 @@ def post_meal():
     data = request.get_json()
     main = main_json["main"]
     side = side_json["side"]
-    price = 
+    price_main = prices["main"]
+    price_side = prices["side"] 
     total_price = prices["main"][main] + prices["side"][side]
-    return jsonify(price)
+    return jsonify(price_main=price_main, price_side=price_side, total_price=total_price)
