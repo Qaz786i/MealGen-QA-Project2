@@ -1,9 +1,9 @@
 - hosts: dev
   become: true
   roles:
-  - python
-  - docker
-  - docker-compose
+    - python
+    - docker
+    - docker-compose
   tasks:
   - name: create git dir
     file:
@@ -30,8 +30,8 @@
 - hosts: swarmmanagers
   become: true
   roles:
-  - docker
-  - swarm-manager
+    - docker
+    - swarm-manager
   tasks:
   - name: add ansible user to docker group
     user:
@@ -44,7 +44,7 @@
 - hosts: swarmworkers
   become: true
   roles:
-  - docker
-  - swarm-worker
+    - docker
+    - swarm-worker
   vars:
     docker_user: qazyb

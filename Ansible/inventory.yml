@@ -24,9 +24,9 @@ all:
           ansible_user: qazyb
           ansible_ssh_private_key_file: /home/qazybig/.ssh/id_rsa
           ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-    # webserver:
-    #   hosts:
-    #     nginx:
-    #       ansible_user: agray
-    #       ansible_ssh_private_key_file: /home/a_gray_4797/.ssh/id_rsa
-    #       ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    webserver:
+       hosts:
+         nginx:
+           ansible_user: qazyb
+           ansible_ssh_private_key_file: /home/qazybig/.ssh/id_rsa
+           ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
