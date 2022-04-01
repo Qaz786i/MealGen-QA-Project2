@@ -7,5 +7,5 @@ class Make_meal(db.Model):
     price_main = db.Column(db.Integer)
     price_side = db.Column(db.Integer)
     total_price = db.Column(db.Integer)
-    def __repr__(self):
+    def __str__(self):
         return f"Mains: {self.main_dish} {self.price_main}, Sides: {self.side_dish} {self.price_side}, Total Price: {self.price}"

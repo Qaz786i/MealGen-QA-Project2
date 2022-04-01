@@ -7,3 +7,4 @@ flask_sqlalchemy
 flask_testing
 pytest
 pytest-cov
+werkzeug==2.0.3
