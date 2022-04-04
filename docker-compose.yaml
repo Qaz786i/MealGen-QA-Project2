@@ -11,7 +11,7 @@ services:
       - "meal-gen-net"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: meal-gen-deb
+      MYSQL_DATABASE: mealgen_db
   front-end:
     image: qasimharoon/meal-gen-front:latest
     build: ./front-end
@@ -19,20 +19,21 @@ services:
       - "meal-gen-net"
     depends_on:
       - "mysql"
-      - "animal-api"
-      - "noise-api"
+      - "service_2"
+      - "service_3"
+      - "service_4"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  animal-api:
-    image: qasimharoon/animal-noise-animal:latest
-    build: ./animal-api
+  service_2:
+    image: qasimharoon/service_2:latest
+    build: ./service_2
     networks:
-      - "animal-net"
-  noise-api:
-    image: qasimharoon/animal-noise-noise:latest
-    build: ./noise-api
+      - "meal-gen-net"
+  service_3:
+    image: qasimharoon/service_3:latest
+    build: ./service_2
     networks:
-      - "animal-net"
+      - "meal-gen-net"
   nginx:
     image: nginx:latest
     ports:
