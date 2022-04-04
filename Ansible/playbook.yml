@@ -11,8 +11,8 @@
       path: /home/qazyb/MealGen-QA-Project2
   - name: clone repo
     git:
-      repo: https://github.com/https://github.com/Qaz786i/MealGen-QA-Project2/
-      dest: /home/agray/MealGen-QA-Project2
+      repo: https://github.com/Qaz786i/MealGen-QA-Project2/
+      dest: /home/qazyb/MealGen-QA-Project2
       clone: yes
   vars:
     docker_user: qazyb

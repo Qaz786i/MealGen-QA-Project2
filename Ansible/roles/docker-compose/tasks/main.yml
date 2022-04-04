@@ -2,8 +2,9 @@
 # tasks file for docker-compose
 - name: install apt dependencies
   apt:
-  name: curl
-  state: present
+    name: curl
+    state: present
+
 - name: install compose
   get_url:
     url: https://github.com/docker/compose/releases/download/v2.3.4/docker-compose-linux-x86_64
