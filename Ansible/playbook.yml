@@ -17,15 +17,15 @@
   vars:
     docker_user: qazyb
 
-#- hosts: ciservers
-  #become: true
-  #roles:
-  #- python
-  #- docker
-  #- docker-compose
-  #- jenkins
-  #vars:
-    #docker_user: jenkins
+- hosts: ciservers
+  become: true
+  roles:
+  - python
+  - docker
+  - docker-compose
+  - jenkins
+  vars:
+    docker_user: jenkins
 
 - hosts: swarmmanagers
   become: true
