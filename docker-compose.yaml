@@ -34,6 +34,11 @@ services:
     build: ./service_2
     networks:
       - "meal-gen-net"
+  service_4:
+    image: qasimharoon/service_4:latest
+    build: ./service_4
+    networks:
+      - "meal-gen-net"    
   nginx:
     image: nginx:latest
     ports:
