@@ -1,5 +1,7 @@
 # MealGen-QA-Project2
 
+This repository contains my project for the QA DevOps practical project.
+
 ## Contents: 
 
 - Project Breif
