@@ -17,7 +17,7 @@ pipeline {
                 sh "docker-compose push"
             }
         }
-        stage('Deploy to Swarm') {
+        //stage('Deploy to Swarm') {
             steps {
                 sh "echo '    driver: overlay' >> docker-compose.yaml"
                 sh "scp ./docker-compose.yaml jenkins@swarm-manager:/home/jenkins/docker-compose.yaml"
