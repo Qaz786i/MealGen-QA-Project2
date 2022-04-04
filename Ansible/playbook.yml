@@ -38,8 +38,8 @@
       name: qazyb
       groups: docker
       append: yes
-  vars:
-    docker_user: jenkins
+  #vars:
+  #  docker_user: jenkins
 
 - hosts: swarmworkers
   become: true
