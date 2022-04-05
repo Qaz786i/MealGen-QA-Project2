@@ -1,7 +1,7 @@
 from application import app, db
 from application.models import Make_meal
 import requests
-from flask import render_template, url_for, requests
+from flask import render_template, url_for
 
 
 @app.route('/')
