@@ -9,7 +9,7 @@ def index():
     main = requests.get('http://service_2:5000/get-mains')
     side = requests.get('http://service_3:5000/get-side')
     price = requests.post('http://service_3:5000/post-meal')
-    db.session.add(Make_meal(main=main.json()["mains"], sides=sides.json()["sides"], price_main=price_main.json()["price_main"], price_side=price_side.json()["price_side"], total_price=total_price.json()["total_price"]))
+    db.session.add(Make_meal(main=main.json()["main"], sides=sides.json()["sides"], price_main=price_main.json()["price_main"], price_side=price_side.json()["price_side"], total_price=total_price.json()["total_price"]))
     db.session.commit()
     meals = Make_meal.query.all()
     last5meals = Make_meal.query.order_by(Make_meal.id.desc()).limit(5).all() 
