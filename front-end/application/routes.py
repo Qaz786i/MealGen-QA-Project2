@@ -6,8 +6,8 @@ from flask import render_template, url_for
 
 @app.route('/')
 def index():
-    main_dish = requests.get('http://service_2:5000/get-mains')
-    side_dish = requests.get('http://service_3:5000/get-side')
+    main = requests.get('http://service_2:5000/get-mains')
+    side = requests.get('http://service_3:5000/get-side')
     price = requests.post('http://service_3:5000/post-meal')
     db.session.add(Make_meal(mains=mains.json()["mains"], sides=sides.json()["sides"], price_main=price_main.json()["price_main"], price_side=price_side.json()["price_side"], total_price=total_price.json()["total_price"]))
     db.session.commit()

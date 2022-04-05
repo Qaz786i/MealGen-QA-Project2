@@ -6,7 +6,7 @@ prices = {'Tuna Mayo Baguette': 3, 'Prawn Mayo Sandwich': 1, 'Chicken Tikka Curr
 @app.route('/post-meal', methods=['POST'])
 def post_meal():
     data = request.get_json()
-    mains = data_json["mains"]
+    mains = data_json["main"]
     sides = data_json["side"]
     price_main = prices[mains]
     price_side = prices[sides] 
