@@ -57,4 +57,5 @@ volumes:
   meal-gen-vol:
 networks:
   meal-gen-net:
+    driver: overlay
   
