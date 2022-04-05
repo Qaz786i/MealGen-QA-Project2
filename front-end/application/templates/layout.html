@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Random Meal Generator</title>
+    </head>
+    <body style="background-color: rgb(33, 216, 216); font-family: Calibri;">
+        <h1>Random Meal Generator</h1>
+        <a href="{{ url_for('home') }}">Home</a> || 
+        {% for meals in Make_meal %}
+        {{ Make_meal.__str__() }}
+        <br>
+        {% endfor %}
+    </body>
+</html>
