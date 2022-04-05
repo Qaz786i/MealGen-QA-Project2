@@ -1,7 +1,7 @@
 from application import db
 
 class Make_meal(db.Model):
-    id = db.Column(db.Interger, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     main_dish = db.Column(db.String(30), nullable=False)
     side_dish = db.Column(db.String(30), nullable=False)
     price_main = db.Column(db.Integer)
