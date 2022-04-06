@@ -31,7 +31,7 @@ services:
       - "meal-gen-net"
   service_3:
     image: qasimharoon/service_3:latest
-    build: ./service_2
+    build: ./service_3
     networks:
       - "meal-gen-net"
   service_4:
