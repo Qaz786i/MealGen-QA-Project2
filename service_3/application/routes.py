@@ -1,5 +1,5 @@
 from application import app
-from flask import jsonify, request
+from flask import jsonify
 from random import choice
 
 sides = ['Prawn Cocktail Walkers', 'Kettle Chips Sea Salt & Malt Vinegar', 'Sensations Sweet Chili', 'Fruit Bowl', 'Pineapple Chunks', 'Apple Slices']
