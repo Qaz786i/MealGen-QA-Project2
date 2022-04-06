@@ -22,5 +22,5 @@ def index():
 
 @app.route('/history', methods=['GET'])
 def history():
-    meal_history = Make_meal.query.all
+    meal_history = Make_meal.query.all()
     return render_template('history.html', meal_history = meal_history) 
