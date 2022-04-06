@@ -11,7 +11,7 @@ services:
       - "meal-gen-net"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: mealgen_db
+      MYSQL_DATABASE: mealgen-db
   front-end:
     image: qasimharoon/meal-gen-front:latest
     build: ./front-end
