@@ -8,7 +8,7 @@ from flask import render_template, url_for
 def index():
     main = requests.get('http://service_2:5000/get-mains')
     side = requests.get('http://service_3:5000/get-side')
-    prices = requests.post('http://service_4:5000/post-meal', json={main=main.json()['main'], side=side.json()['side']})
+    prices = requests.post('http://service_4:5000/post-meal', json={"main":main.json()['main'], "side":side.json()['side']})
     price_main = prices.json()['price_main']
     price_side = prices.json()['price_side']
     total_price = prices.json()['total_price']
