@@ -26,15 +26,17 @@ The brief for this project was to produce an application consisting of four micr
 
 ## Project Planning
 
+#Risk Assesment
+
 A risk assesment was one of the project planning requirements for the project and was undertaken to identify any potential risks. This assesment can be seen below 
 
 ![risk assesment](https://user-images.githubusercontent.com/99325859/161582489-96501bab-7770-45a3-bffb-5838b0b33a2b.png)
 
 Each risk was given a score for probability of how likely the event would take place and a score for how it would effect the project if the event took place. This assesment would help with applying extra measures to the project such as not adding passwords to the code and pushing them to github. Control measures were observed throughout the project
 
-Entity Diagram
+#Entity Diagram
 
-In this project a data will be used to save and store data. This data will store the meeals and sides that will be randomly generated. The table is fairly simple it consists of an ID number for the meal, a main dish, a price for the main dish, a side dish, the price of the side dish and lastly the total price of the two dishes. The stored data can be seen on a history page showing all previous generated data. Below is an illustration of the entity diagram. 
+In this project data will be used to save and store data. This data will store the meals and sides that will be randomly generated. Prices associated to these dishes are also stored in this table. The table is fairly simple it consists of an ID number for the meal, a main dish, a price for the main dish, a side dish, the price of the side dish and lastly the total price of the two dishes. The stored data can be seen on a history page showing all previous generated data. Below is an illustration of the entity diagram. 
 
 ![draw io](https://user-images.githubusercontent.com/99325859/162220951-fe5f5c22-5299-450e-ad57-47209bbbc8f8.png)
 
@@ -44,13 +46,12 @@ For this project I have chosen to develop a random meal generator. This project 
 
 ![arch](https://user-images.githubusercontent.com/99325859/162225020-b6dcb489-304e-43aa-ae5d-931428a3c83f.png)
 
-- Front-end (aka Service 1): This is the service the user interacts with. This service sends requests to the other services to generate the random meals. It randomly generates the meals and also stores them in a SQL database.
-- Service 2 : Service 2 is a HTTP GET request from service 1 and using random.choice() it randomly selects a main and its associated price.
-- Service 3 : Service 3 is a HTTP GET request from service 1 and using random.choice() it randomly selects a side and its assocated price.
-- Service 4 : Service 4 is HTTP POST request from service 1 which provides the randomly generated main and sides with prices as JSON objects. Service 4 uses a dictionary to add the total price of the randomly generated meals together.
+- Front-end (aka Service 1): This is the service the user interacts with. This service sends requests to the other services (2,3 and 4) to generate the random meals. It randomly generates the meals and also stores them in a SQL database.
+- Service 2 : Service 2 uses a GET method request from service 1 and using random.choice() it randomly selects a main and its associated price.
+- Service 3 : Service 3 uses a GET request from service 1 and using random.choice() it randomly selects a side and its assocated price.
+- Service 4 : Service 4 is a POST request from service 1 which provides the randomly generated main and sides with prices and total prices.
 
 Additionaly a reverse proxy using NGINX was used. NGINX allows traffic to be diverted to port5000 when port80 is busy. This allows the user to still have access to the front-end and have full access
-
 
 ## CI/CD Pipeline
 
@@ -62,18 +63,25 @@ This project had used a full CI/CD pipeline to fully test,build,deploy and maint
 - CI Server 
 - Deployment Enviroment
 
-Project tracking was done using Trello. With this tasks were assigned and moved along as they were being completed.
-{pic of trello board}
+Project tracking was done using Trello. With this tasks were assigned and moved along the board as they were being completed. This allowed for monitoring what tasks needed to be done and which tasks were left to do.
+
+![trello](https://user-images.githubusercontent.com/99325859/162289115-e06add46-c6b8-49ce-85ef-6aa55ce0ded5.png)
 
 Git was used for version control whilst using giithub as the repository sotrage. Feature branches were added to the project to easily access each feature. This can be seen below from a screenshot of github
 
 ![feature branch](https://user-images.githubusercontent.com/99325859/162223671-bccee34d-5757-4e81-be0d-7db5f7ea16d3.png)
 
-Jenkins was used for the Continuous Integration server (CI). Set up with a github webhook jenkins would clone the repository and run a jenkinsfile which stored all the script details. The pipeline had 4 main stages which were to test first, then build, then deploy to swarm and then lastly the post build actions which in this case were to artifact the coverage report from the tests. The test stages executes a bash script which then goes through every microservice and runs the predefined tests to check functionality using pytest. Use of unittest.mock and request_mock were both used to help with testing the api's and http request functionalities. The coverage of each service can be seen in the picture below
+For the Developer Environment GCP was used as a host which allowed for VM's to be created running on Ubuntu 20.04. This was SSH onto VSCode. Ansible was also used on this VM to install all required dependencies on every VM. Roles were created and using playbooks this allowed for easy automated installation of modules instead of individiually installing them by going through the SSH route. As bellow you can see a successful outcome of running ansible. 
 
-After the test stage came the build and push stage. This stage used docker-compise to build images for each services. Once done the script would then use given credentials to log into Dockerhub and push these images.
+![ansible](https://user-images.githubusercontent.com/99325859/162283896-2881c311-762f-4b88-981c-4e52459a9a0f.png)
 
-Once the images were successfully pushed the script would then move onto the deploy stage. The docker manager uses a secure copy to copy the nginx.conf and the docker-compose.yaml files. Ansible is used with a playbook to run the 3 stated roles. These roles are to first install docker on the swarm machines and then add jenkins to the docker group. The second role initializes a swarm on the manager node and used the ansible docker stack deploy command to deploy the application. Lastly the final role creates a swarm worker and adds it to the node. This creates our fully working pipeline
+Jenkins was used for the Continuous Integration server (CI). Set up with a github webhook jenkins would clone the repository and run a jenkinsfile which stored all the script details. The pipeline had 4 main stages which were to test first, then build, then deploy to swarm and then lastly the post build actions which in this case were to artifact the coverage report from the tests. The test stages executes a bash script which then goes through every microservice and runs tests to check functionality using pytest. The coverage of each service can be seen in the picture below
+
+{pic of tests}
+
+After the test stage came the build and push stage. This stage used docker-compose to build images for each services. Once done the script would then use given credentials to log into Dockerhub and push these images.
+
+Once the images were successfully pushed the script would then move onto the deploy stage. The deploy stage deploys the entire application once the deploy script is and creates a docker-stack along with 3 replicas of the front-end.
 
 The finally the last stage of the build was the post-build stage. Here the test reports were published
 
@@ -89,4 +97,5 @@ NA
 
 ## Future Work
  - A feature could be added where the user is able to add a main or a side of thier choice into dictionary
- - Drinks is a another class tgat could be added to make a complete meal 
+ - Drinks is a another class tgat could be added to make a complete meal
+ - Add images to each item
