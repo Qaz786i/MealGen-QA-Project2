@@ -2,7 +2,7 @@ from application import db
 
 class Make_meal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    main = db.Column(db.String(200), nullable=False)
+    main = db.Column(db.String(500), nullable=False)
     side = db.Column(db.String(200), nullable=False)
     price_main = db.Column(db.Integer)
     price_side = db.Column(db.Integer)
