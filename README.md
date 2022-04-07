@@ -71,7 +71,7 @@ Git was used for version control whilst using giithub as the repository sotrage.
 
 ![feature branch](https://user-images.githubusercontent.com/99325859/162223671-bccee34d-5757-4e81-be0d-7db5f7ea16d3.png)
 
-For the Developer Environment GCP was used as a host which allowed for VM's to be created running on Ubuntu 20.04. This was SSH onto VSCode. Ansible was also used on this VM to install all required dependencies on every VM. Roles were created and using playbooks this allowed for easy automated installation of modules instead of individiually installing them by going through the SSH route. As bellow you can see a successful outcome of running ansible. 
+For the Developer Environment GCP was used as a host which allowed for VM's to be created running on Ubuntu Pro 20.04. This was then SSH remoted onto VSCode. Ansible was also used on this VM to install all required dependencies on every VM. Roles were created and using playbooks this allowed for easy automated installation of modules instead of individiually installing them by going through the SSH route. As bellow you can see a successful outcome of running ansible. 
 
 ![ansible](https://user-images.githubusercontent.com/99325859/162283896-2881c311-762f-4b88-981c-4e52459a9a0f.png)
 
