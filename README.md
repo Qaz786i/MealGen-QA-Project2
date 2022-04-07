@@ -91,9 +91,16 @@ Above is showcasing the jenkins pipeline. Successful builds display all green ac
 
 ![microservices_architecture drawio](https://user-images.githubusercontent.com/99325859/162221721-fb4c2677-6e83-4ced-9212-f29d60ac843f.png)
 
-## Known Issues
+##App 
 
-NA
+Below is a snapchat of the front where it shows the randomly generated meal and the last 5 meals generated below that. There is a link for the homepage and also the history page
+
+![front-end website](https://user-images.githubusercontent.com/99325859/162290522-a959b88e-9939-460a-a719-035844bb93d5.png)
+
+Below is the history page which shows every meal generated 
+
+{pic of history page}
+
 
 ## Future Work
  - A feature could be added where the user is able to add a main or a side of thier choice into dictionary
