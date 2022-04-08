@@ -13,7 +13,7 @@ This repository contains my project for the QA DevOps practical project.
 
 ## Project Brief
 
-The brief for this project was to produce an application consisting of four microservices, which interact with eachother to randomly generate objects using defined logic. The application was to be produced and was maintained using an automated CI/CD pipeline. There were many technologies impletemented into this project which are all listed below:
+The brief for this project was to produce an application consisting of four microservices, which interact with eachother to randomly generate objects using definitions. The application was to be produced and was maintained using an automated CI/CD pipeline. There were many technologies impletemented into this project which are all listed below:
 
 - Trello board for project tracking
 - Git for version control
