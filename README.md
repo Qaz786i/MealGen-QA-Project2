@@ -17,7 +17,7 @@ The brief for this project was to produce an application consisting of four micr
 
 - Trello board for project tracking
 - Git for version control
-- Jenkins for our CI server
+- Jenkins for the CI server
 - Ansilble for configuration management
 - GCP cloud platform for our VM's
 - Docker as our containerisation tool
