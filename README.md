@@ -13,11 +13,11 @@ This repository contains my project for the QA DevOps practical project.
 
 ## Project Brief
 
-The brief for this project was to produce an application consisting of four microservices, which interact with eachother to randomly generate objects using defined logic. The application was to be produced and was maintained using an automated CI/CD pipeline. There were many technologies impletemented into this project which are all listed below:
+The brief for this project was to produce an application consisting of four microservices, which interact with eachother to randomly generate objects using definitions. The application was to be produced and was maintained using an automated CI/CD pipeline. There were many technologies impletemented into this project which are all listed below:
 
 - Trello board for project tracking
 - Git for version control
-- Jenkins for our CI server
+- Jenkins for the CI server
 - Ansilble for configuration management
 - GCP cloud platform for our VM's
 - Docker as our containerisation tool
@@ -47,9 +47,9 @@ For this project I have chosen to develop a random meal generator. This project 
 ![arch](https://user-images.githubusercontent.com/99325859/162225020-b6dcb489-304e-43aa-ae5d-931428a3c83f.png)
 
 - Front-end (aka Service 1): This is the service the user interacts with. This service sends requests to the other services (2,3 and 4) to generate the random meals. It randomly generates the meals and also stores them in a SQL database.
-- Service 2 : Service 2 uses a GET method request from service 1 and using random.choice() it randomly selects a main and its associated price.
-- Service 3 : Service 3 uses a GET request from service 1 and using random.choice() it randomly selects a side and its assocated price.
-- Service 4 : Service 4 is a POST request from service 1 which provides the randomly generated main and sides with prices and total prices.
+- Service 2 : Service 2 uses a GET method request from service 1 and using random.choice() it randomly selects a main
+- Service 3 : Service 3 uses a GET request from service 1 and using random.choice() it randomly selects a side
+- Service 4 : Service 4 is a POST request from service 1 which provides the randomly generated main and sides with their associated prices and total prices.
 
 Additionaly a reverse proxy using NGINX was used. NGINX allows traffic to be diverted to port5000 when port80 is busy. This allows the user to still have access to the front-end and have full access
 
@@ -77,7 +77,7 @@ For the Developer Environment GCP was used as a host which allowed for VM's to b
 
 Jenkins was used for the Continuous Integration server (CI). Set up with a github webhook jenkins would clone the repository and run a jenkinsfile which stored all the script details. The pipeline had 4 main stages which were to test first, then build, then deploy to swarm and then lastly the post build actions which in this case were to artifact the coverage report from the tests. The test stages executes a bash script which then goes through every microservice and runs tests to check functionality using pytest. The coverage of each service can be seen in the picture below
 
-{pic of tests}
+![tests](https://user-images.githubusercontent.com/99325859/162403183-9faf71f5-417d-4190-b479-618f79c4971b.png)
 
 After the test stage came the build and push stage. This stage used docker-compose to build images for each services. Once done the script would then use given credentials to log into Dockerhub and push these images.
 
@@ -99,8 +99,7 @@ Below is a snapchat of the front where it shows the randomly generated meal and 
 
 Below is the history page which shows every meal generated 
 
-{pic of history page}
-
+![history](https://user-images.githubusercontent.com/99325859/162403388-593092d1-fcbd-4f89-bc8f-fbbd591eb47e.png)
 
 ## Future Work
  - A feature could be added where the user is able to add a main or a side of thier choice into dictionary
