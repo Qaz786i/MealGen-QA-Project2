@@ -9,3 +9,4 @@ pytest
 pytest-cov
 werkzeug==2.0.3
 pymysql
+requests_mock
