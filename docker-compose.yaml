@@ -1,0 +1,60 @@
+version: "3.8"
+services:
+  mysql:
+    image: qasimharoon/meal-gen-db:latest
+    build: ./db
+    volumes:
+      - type: volume
+        source: meal-gen-vol
+        target: /var/lib/mysql
+    networks:
+      - "meal-gen-net"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: mealgen-db
+  front-end:
+    image: qasimharoon/meal-gen-front:latest
+    build: ./front-end
+    networks:
+      - "meal-gen-net"
+    depends_on:
+      - "mysql"
+      - "service_2"
+      - "service_3"
+      - "service_4"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  service_2:
+    image: qasimharoon/service_2:latest
+    build: ./service_2
+    networks:
+      - "meal-gen-net"
+  service_3:
+    image: qasimharoon/service_3:latest
+    build: ./service_3
+    networks:
+      - "meal-gen-net"
+  service_4:
+    image: qasimharoon/service_4:latest
+    build: ./service_4
+    networks:
+      - "meal-gen-net"    
+  nginx:
+    image: nginx:latest
+    ports:
+      - published: 80
+        target: 80
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+    networks:
+      - "meal-gen-net"
+    depends_on:
+      - "front-end"
+volumes:
+  meal-gen-vol:
+networks:
+  meal-gen-net:
+    driver: overlay

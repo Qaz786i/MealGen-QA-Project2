@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> Home </h2>
+<br>
+{% for Make_meal in meals %}
+<div>
+<h2>Your Random Meal Today is :
+<br>
+<br>
+{{ Make_meal.__str__() }}</h2>
+</div>
+<br>
+{% endfor %}
+<h3> Your Previous 5 Meals</h3>
+<br>
+{% for Make_meal in last5meals %}
+{{ Make_meal.__str__() }}
+<br>
+{% endfor %}
+{% endblock body %}

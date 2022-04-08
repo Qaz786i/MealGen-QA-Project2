@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block body %}
+<h2> History </h2>
+<br>
+{% for Make_meal in meal_history %}
+{{ Make_meal.__str__() }}
+<br>
+{% endfor %}
+{% endblock body %}
