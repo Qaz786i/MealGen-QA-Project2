@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service3-api
+  spec:
+    selector:
+      app: servic3-api
+    ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service3-api
+  labels:
+    app: service3-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service3-api
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: service3-api
+    spec:
+      containers:
+      - name: service3-api
+        image: qasimharoon/service_3:latest
+        ports:
+        - containerPort: 5000
